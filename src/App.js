@@ -37,8 +37,9 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   const divForScroll = useRef(null);
+
   const submithandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault();           // this is stop the page to reload again and again as messages are stored and state is changed
     try {
       await addDoc(collection(db, "Messages"), {
         text: message,
@@ -72,6 +73,7 @@ function App() {
       unsubscribeformsg();
     };
   }, []);
+
   return (
     <Box bg={"red.50"}>
       {user ? (
